@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="./style/index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="center bg-light text-center">
+      <div
+        class="d-flex flex-column flex-md-row p-4 gap-4 align-items-center justify-content-center"
+      >
+        <h1 class="display-5 text-body-emphasis">My to-do-list</h1>
+      </div>
+      <div class="list-group align-items-center justify-content-center">
+        <label class="list-group-item d-flex gap-2">
+          <input class="form-check-input flex-shrink-0" type="checkbox" />
+          <span class="list"> Buy grocery </span>
+        </label>
+        <label class="list-group-item d-flex gap-2">
+          <input class="form-check-input flex-shrink-0" type="checkbox" />
+          <span class="list"> Study </span>
+        </label>
+        <label class="list-group-item d-flex gap-2">
+          <input class="form-check-input flex-shrink-0" type="checkbox" />
+          <span class="list"> Call mom </span>
+        </label>
+
+        <% if(locals.Tasks){ Tasks.map(( Task )=>{ %>
+
+        <label class="list-group-item d-flex gap-2">
+          <input class="form-check-input flex-shrink-0" type="checkbox" />
+          <span class="list"> <%= Task %> </span>
+        </label>
+        <% })} %>
+        <form action="/submit" method="post" name="toDoList">
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Write new tasks ...."
+            aria-label="Add task"
+            name="newItem"
+          />
+          <button type="submit" class="btn btn-outline-dark mt-2">
+            Add task +
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
